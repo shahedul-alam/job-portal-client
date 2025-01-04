@@ -2,7 +2,7 @@ import Banner from "../components/homepage/Banner";
 
 const HomePage = () => {
   return (
-    <main>
+    <main className="font-inter">
       <Banner />
     </main>
   );
