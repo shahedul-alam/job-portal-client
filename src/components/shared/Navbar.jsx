@@ -1,7 +1,37 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContextProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { pathname } = useLocation();
+  const { user, signoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSignoutUser = () => {
+    signoutUser()
+      .then(() => {
+        Swal.fire({
+          title: "You have successfully logged out",
+          text: "See you next time and good luck with your job search!",
+          icon: "success",
+          showConfirmButton: false,
+        });
+
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+        Swal.fire({
+          title: "Sorry!",
+          text: "we encountered an issue logging you out. Please try again later.",
+          icon: "error",
+          showConfirmButton: false,
+        });
+      });
+  };
 
   const homepageNavbar = (
     <header className="relative font-inter">
@@ -54,20 +84,50 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <div className="navbar-end gap-2">
-            <Link
-              to={"/login"}
-              className="btn bg-[#047857] text-white font-medium text-base border-none hover:bg-[#01543a]"
-            >
-              Login
-            </Link>
-            <Link
-              to={"/register"}
-              className="btn font-medium text-base border-none"
-            >
-              Register
-            </Link>
-          </div>
+          {user ? (
+            <div className="navbar-end">
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar online"
+                >
+                  <div className="ring-[#047857] ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
+                    <img
+                      alt="user"
+                      src={user.photoURL}
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <a>{user.displayName}</a>
+                  </li>
+                  <li>
+                    <button onClick={handleSignoutUser}>Logout</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <div className="navbar-end gap-2">
+              <Link
+                to={"/login"}
+                className="btn bg-[#047857] text-white font-medium text-base border-none hover:bg-[#01543a]"
+              >
+                Login
+              </Link>
+              <Link
+                to={"/register"}
+                className="btn font-medium text-base border-none"
+              >
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
     </header>
@@ -122,20 +182,50 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <div className="navbar-end gap-2">
-            <Link
-              to={"/login"}
-              className="btn bg-[#047857] text-white font-medium text-base border-none hover:bg-[#01543a]"
-            >
-              Login
-            </Link>
-            <Link
-              to={"/register"}
-              className="btn font-medium text-base border-none"
-            >
-              Register
-            </Link>
-          </div>
+          {user ? (
+            <div className="navbar-end">
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar online"
+                >
+                  <div className="ring-[#047857] ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
+                    <img
+                      alt="user"
+                      src={user.photoURL}
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <a>{user.displayName}</a>
+                  </li>
+                  <li>
+                    <button onClick={handleSignoutUser}>Logout</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <div className="navbar-end gap-2">
+              <Link
+                to={"/login"}
+                className="btn bg-[#047857] text-white font-medium text-base border-none hover:bg-[#01543a]"
+              >
+                Login
+              </Link>
+              <Link
+                to={"/register"}
+                className="btn font-medium text-base border-none"
+              >
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </nav>
     </header>
