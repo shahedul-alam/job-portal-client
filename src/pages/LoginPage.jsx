@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import banner from "../assets/login-signup-banner.jpg";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContextProvider";
 import Swal from "sweetalert2";
+import banner from "../assets/login-signup-banner.jpg";
 
 const LoginPage = () => {
   const { signinUser, logInWithGoogle } = useContext(AuthContext);
@@ -106,7 +106,7 @@ const LoginPage = () => {
               />
               <label className="label">
                 <Link
-                  to={`forgotPassword`}
+                  to={`/reset-password`}
                   className="label-text-alt link link-hover"
                 >
                   Forgot password?

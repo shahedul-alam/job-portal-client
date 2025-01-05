@@ -90,7 +90,7 @@ const Navbar = () => {
                 <div
                   tabIndex={0}
                   role="button"
-                  className="btn btn-ghost btn-circle avatar online"
+                  className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="ring-[#047857] ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
                     <img
@@ -188,7 +188,7 @@ const Navbar = () => {
                 <div
                   tabIndex={0}
                   role="button"
-                  className="btn btn-ghost btn-circle avatar online"
+                  className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="ring-[#047857] ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
                     <img
