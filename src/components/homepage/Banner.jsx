@@ -19,8 +19,8 @@ const Banner = () => {
             we've helped recruit excellent applicants over the years.
           </p>
 
-          <div className="h-24 p-4 bg-white flex rounded-lg mb-5">
-            <label className="w-1/3 bg-gray-50 flex items-center px-4 border-r-2 border-gray-300">
+          <div className="h-full sm:h-24 p-4 bg-white grid grid-cols-1 grid-rows-3 sm:flex sm:flex-row rounded-lg mb-5">
+            <label className="sm:w-1/3 bg-gray-50 flex items-center px-4 border-b sm:border-b-0 sm:border-r border-gray-300">
               <input
                 type="text"
                 className="w-full bg-gray-50 font-inter text-sm text-gray-600 placeholder:text-gray-600 focus:outline-none"
@@ -28,7 +28,7 @@ const Banner = () => {
               />
             </label>
 
-            <select className="h-full select bg-gray-50 font-inter text-sm font-normal text-gray-600 rounded-none w-1/3 focus:outline-none focus:border-none">
+            <select className="sm:w-1/3 h-full select bg-gray-50 font-inter text-sm font-normal text-gray-600 rounded-none focus:outline-none focus:border-none">
               <option disabled selected>
                 Location
               </option>
@@ -36,13 +36,13 @@ const Banner = () => {
               <option>America</option>
             </select>
 
-            <button className="w-1/3 h-full btn rounded-none bg-[#047857] text-white font-normal font-inter text-base border-none hover:bg-[#01543a]">
+            <button className="sm:w-1/3 h-full btn rounded-none bg-[#047857] text-white font-normal font-inter text-base border-none hover:bg-[#01543a]">
               Search
             </button>
           </div>
           <p className="text-center font-inter">
-            <span className="text-white">Popular Searches :</span> Designer, Developer, Web, IOS, PHP Senior
-            Engineer
+            <span className="text-white">Popular Searches :</span> Designer,
+            Developer, Web, IOS, PHP Senior Engineer
           </p>
         </div>
       </div>
