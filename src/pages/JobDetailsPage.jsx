@@ -15,10 +15,10 @@ const JobDetailsPage = () => {
   }, []);
 
   return (
-    <section className="container mx-auto px-4 flex flex-col gap-5 md:flex-row-reverse md:gap-8 my-10 lg:my-16">
+    <main className="container mx-auto px-4 flex flex-col gap-5 md:flex-row-reverse md:gap-8 my-10 lg:my-16">
       <JobInfoBar data={jobData} />
       <JobDetailsBar data={jobData} />
-    </section>
+    </main>
   );
 };
 

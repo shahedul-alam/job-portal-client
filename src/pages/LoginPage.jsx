@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
-import { AuthContext } from "../contexts/AuthContextProvider";
 import Swal from "sweetalert2";
 import banner from "../assets/login-signup-banner.jpg";
+import useAuth from "../hooks/useAuth";
 
 const LoginPage = () => {
-  const { signinUser, logInWithGoogle } = useContext(AuthContext);
+  const { signinUser, logInWithGoogle } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 

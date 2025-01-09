@@ -46,9 +46,9 @@ const HotJobCard = ({ data }) => {
       </div>
 
       <div className="w-full">
-        <button className="w-full btn bg-[#047857] text-white font-medium text-base border-none hover:bg-[#01543a]">
+        <Link to={`/job-apply/${_id}`} className="w-full btn bg-[#047857] text-white font-medium text-base border-none hover:bg-[#01543a]">
           Apply Now
-        </button>
+        </Link>
       </div>
     </div>
   );

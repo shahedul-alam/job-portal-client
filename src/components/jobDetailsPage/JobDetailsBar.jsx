@@ -1,7 +1,9 @@
 import { GoArrowRight } from "react-icons/go";
+import { Link } from "react-router";
 
 const JobDetailsBar = ({ data }) => {
   const {
+    _id,
     description,
     requirements,
     responsibilities,
@@ -47,9 +49,9 @@ const JobDetailsBar = ({ data }) => {
       </div>
 
       <div className="w-full md:w-fit">
-        <button className="w-full btn bg-[#047857] text-white font-medium text-base border-none hover:bg-[#01543a]">
+        <Link to={`/job-apply/${_id}`} className="w-full btn bg-[#047857] text-white font-medium text-base border-none hover:bg-[#01543a]">
           Apply Now
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -2,12 +2,11 @@ import banner from "../assets/login-signup-banner.jpg";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import { AuthContext } from "../contexts/AuthContextProvider";
-import { useContext, useState } from "react";
+import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 const RegisterPage = () => {
-  const { createNewUser, updateUserProfile, logInWithGoogle } =
-    useContext(AuthContext);
+  const { createNewUser, updateUserProfile, logInWithGoogle } = useAuth();
   const navigate = useNavigate();
   const [notValid, setNotValid] = useState(false);
   const regex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;

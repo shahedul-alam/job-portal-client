@@ -6,6 +6,7 @@ import RegisterPage from "../pages/RegisterPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import JobDetailsPage from "../pages/JobDetailsPage";
 import PrivateRoute from "./PrivateRoute";
+import JobApplyPage from "../pages/JobApplyPage";
 
 const Router = () => {
   return (
@@ -18,6 +19,14 @@ const Router = () => {
             element={
               <PrivateRoute>
                 <JobDetailsPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="job-apply/:id"
+            element={
+              <PrivateRoute>
+                <JobApplyPage />
               </PrivateRoute>
             }
           />
