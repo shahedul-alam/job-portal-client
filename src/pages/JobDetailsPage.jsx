@@ -14,17 +14,10 @@ const JobDetailsPage = () => {
       .then((res) => setJobData(res.data));
   }, []);
 
-  console.log(jobData)
-
   return (
-    <section className="my-10 lg:my-16">
-      {/* <div className="h-40 bg-[#047857] rounded-b-[50px] flex justify-center items-center mb-10 lg:mb-16">
-        <h1 className="text-4xl font-semibold text-white">{jobData.title}</h1>
-      </div> */}
-      <div  className="container mx-auto px-4 flex flex-col gap-5 md:flex-row-reverse md:gap-8">
-        <JobInfoBar data={jobData} />
-        <JobDetailsBar data={jobData} />
-      </div>
+    <section className="container mx-auto px-4 flex flex-col gap-5 md:flex-row-reverse md:gap-8 my-10 lg:my-16">
+      <JobInfoBar data={jobData} />
+      <JobDetailsBar data={jobData} />
     </section>
   );
 };

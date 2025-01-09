@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContextProvider";
 import Swal from "sweetalert2";
 import banner from "../assets/login-signup-banner.jpg";
@@ -8,6 +8,9 @@ import banner from "../assets/login-signup-banner.jpg";
 const LoginPage = () => {
   const { signinUser, logInWithGoogle } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state || '/';
 
   const handleSignInUser = (e) => {
     e.preventDefault();
@@ -26,7 +29,7 @@ const LoginPage = () => {
           showConfirmButton: false,
         });
         // navigating to previous page
-        navigate("/", { replace: true });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -52,7 +55,7 @@ const LoginPage = () => {
           showConfirmButton: false,
         });
         // navigating to previous page
-        navigate("/", { replace: true });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         const errorCode = error.code;

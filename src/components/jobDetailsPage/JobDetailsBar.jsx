@@ -1,12 +1,18 @@
 import { GoArrowRight } from "react-icons/go";
 
 const JobDetailsBar = ({ data }) => {
-  const { description, requirements, responsibilities, title, company, company_logo } = data;
-  console.log(data)
+  const {
+    description,
+    requirements,
+    responsibilities,
+    title,
+    company,
+    company_logo,
+  } = data;
 
   return (
     <div className="md:w-3/5">
-      <div className="flex gap-4 p-6 bg-base-200 rounded-lg shadow-sm mb-8">
+      <div className="flex gap-4 p-6 bg-base-200 rounded-lg mb-8">
         <div className="bg-white p-5 rounded-full">
           <img src={company_logo} className="size-20" />
         </div>
@@ -22,7 +28,9 @@ const JobDetailsBar = ({ data }) => {
       </div>
 
       <div className="space-y-5 mb-6">
-        <h2 className="text-xl font-semibold mb-4">Responsibilities and Duties:</h2>
+        <h2 className="text-xl font-semibold mb-4">
+          Responsibilities and Duties:
+        </h2>
         {responsibilities?.map((item) => (
           <div className="flex items-center gap-2">
             <GoArrowRight className="text-lg text-[#047857]" />{" "}

@@ -5,6 +5,7 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import JobDetailsPage from "../pages/JobDetailsPage";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = () => {
   return (
@@ -12,7 +13,14 @@ const Router = () => {
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="jobs/:id" element={<JobDetailsPage />} />
+          <Route
+            path="jobs/:id"
+            element={
+              <PrivateRoute>
+                <JobDetailsPage />
+              </PrivateRoute>
+            }
+          />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="reset-password" element={<ForgotPasswordPage />} />

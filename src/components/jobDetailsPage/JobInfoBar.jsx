@@ -15,8 +15,6 @@ const JobInfoBar = ({ data }) => {
     applicationDeadline,
   } = data;
 
-  console.log(data);
-
   return (
     <div className="border rounded-lg md:w-2/5 h-fit">
       <div className="p-6 border-b">
