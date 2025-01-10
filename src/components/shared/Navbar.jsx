@@ -20,10 +20,7 @@ const Navbar = () => {
 
         navigate("/login");
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+      .catch(() => {
         Swal.fire({
           title: "Sorry!",
           text: "we encountered an issue logging you out. Please try again later.",
@@ -66,6 +63,9 @@ const Navbar = () => {
                 <li>
                   <Link to={"/"}>Home</Link>
                 </li>
+                <li>
+                  <Link to={"/my-applications"}>My Applications</Link>
+                </li>
               </ul>
             </div>
             <Link
@@ -82,6 +82,14 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
+              <li>
+                <Link
+                  to={"/my-applications"}
+                  className="hover:bg-none focus:text-white"
+                >
+                  My Applications
+                </Link>
+              </li>
             </ul>
           </div>
           {user ? (
@@ -93,10 +101,7 @@ const Navbar = () => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="ring-[#047857] ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
-                    <img
-                      alt="user"
-                      src={user.photoURL}
-                    />
+                    <img alt="user" src={user.photoURL} />
                   </div>
                 </div>
                 <ul
@@ -166,6 +171,9 @@ const Navbar = () => {
                 <li>
                   <Link to={"/"}>Home</Link>
                 </li>
+                <li>
+                  <Link to={"/my-applications"}>My Applications</Link>
+                </li>
               </ul>
             </div>
             <Link
@@ -180,6 +188,9 @@ const Navbar = () => {
               <li>
                 <Link to={"/"}>Home</Link>
               </li>
+              <li>
+                <Link to={"/my-applications"}>My Applications</Link>
+              </li>
             </ul>
           </div>
           {user ? (
@@ -191,10 +202,7 @@ const Navbar = () => {
                   className="btn btn-ghost btn-circle avatar"
                 >
                   <div className="ring-[#047857] ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
-                    <img
-                      alt="user"
-                      src={user.photoURL}
-                    />
+                    <img alt="user" src={user.photoURL} />
                   </div>
                 </div>
                 <ul

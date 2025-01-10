@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useNavigate, useParams } from "react-router";
 import Swal from "sweetalert2";
+import useAuth from "../hooks/useAuth";
 
 const JobApplyPage = () => {
+  const {user} = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -18,6 +20,7 @@ const JobApplyPage = () => {
 
     const applicantInfo = {
       jobId: id,
+      user_email: user.email,
       applicant_name: name,
       applicant_email: email,
       applicant_location: location,
@@ -36,7 +39,7 @@ const JobApplyPage = () => {
             showConfirmButton: false,
           });
           // navigating to homepage
-          navigate("/", { replace: true });
+          navigate("/my-applications", { replace: true });
         }
       })
       .catch(() => {
