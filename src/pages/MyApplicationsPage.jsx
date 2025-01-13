@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import axios from "axios";
 import { Link } from "react-router";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const ApplicationRow = ({ data }) => {
   const {
@@ -52,10 +52,10 @@ const ApplicationRow = ({ data }) => {
 const MyApplicationsPage = () => {
   const { user } = useAuth();
   const [applicationsData, setApplicationsData] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/applications?email=${user.email}`)
+    axiosSecure.get(`/applications?email=${user.email}`)
       .then((res) => setApplicationsData(res.data));
   }, [user.email]);
 

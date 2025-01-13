@@ -9,7 +9,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state || '/';
+  const from = location.state || "/";
 
   const handleSignInUser = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const LoginPage = () => {
 
     signinUser(email, password)
       .then(() => {
-        // Signed up
+        // showing successful login alert
         Swal.fire({
           title: "Welcome Back!",
           text: "You have successfully logged in. Let's get to work on your career goals.",
@@ -46,7 +46,7 @@ const LoginPage = () => {
   const handleLogInWithGoogle = () => {
     logInWithGoogle()
       .then(() => {
-        // Signed up
+        // showing successful login alert
         Swal.fire({
           title: "Welcome Back!",
           text: "You have successfully logged in. Let's get to work on your career goals.",

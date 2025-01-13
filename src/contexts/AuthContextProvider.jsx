@@ -1,6 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import { axiosInstance } from "../hooks/useAxiosSecure";
 
 export const AuthContext = createContext();
 
@@ -11,8 +21,16 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
-    })
+
+      if(currentUser) {
+        axiosInstance.post("/generate-token", {email: currentUser.email})
+          .then((res) => setLoading(false));
+      }
+      else {
+        axiosInstance.get("/remove-token")
+        .then((res) => setLoading(false));
+      }
+    });
 
     return () => {
       unsubscribe();
@@ -32,7 +50,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const updateUserProfile = (userInfo) => {
-    return updateProfile(auth.currentUser, {...userInfo});
+    return updateProfile(auth.currentUser, { ...userInfo });
   };
 
   const resetUserPassword = (email) => {
@@ -46,7 +64,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const authInfo = {
-    user, 
+    user,
     loading,
     createNewUser,
     signinUser,
@@ -57,9 +75,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
 
