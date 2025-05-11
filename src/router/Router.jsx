@@ -8,6 +8,7 @@ import JobDetailsPage from "../pages/JobDetailsPage";
 import PrivateRoute from "./PrivateRoute";
 import JobApplyPage from "../pages/JobApplyPage";
 import MyApplicationsPage from "../pages/MyApplicationsPage";
+import Shop from "../pages/Shop";
 
 const Router = () => {
   return (
@@ -39,6 +40,7 @@ const Router = () => {
               </PrivateRoute>
             }
           />
+          <Route path="shop" element={<Shop />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="reset-password" element={<ForgotPasswordPage />} />

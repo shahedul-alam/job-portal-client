@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL:
+    "http://localhost:5000",
   withCredentials: true,
 });
 
@@ -37,4 +38,3 @@ const useAxiosSecure = () => {
 };
 
 export default useAxiosSecure;
-
